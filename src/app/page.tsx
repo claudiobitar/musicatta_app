@@ -26,6 +26,11 @@ export default function Mp3ListPage() {
     }
   }, [router]);
 
+  useEffect(() => {
+    // Define o scroll para o topo ao carregar a página
+    window.scrollTo(0, 0);
+  }, []); // Este useEffect será chamado uma vez quando a página for montada
+
   if (!isAuthenticated) {
     return null; // Ou pode retornar um loading spinner enquanto verifica a autenticação
   }
@@ -83,105 +88,105 @@ export default function Mp3ListPage() {
 
   return (
     <>
-    <Header/> 
-    <div
-      className="min-h-screen bg-slate-800"
-      style={{
-        backgroundImage: "url('/images/mesa_de_som_transp2.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundAttachment: "fixed",
-      }}
-    >
-      <h1
-        className="text-7xl py-7 tracking-wide flex justify-center"
+      <Header />
+      <div
+        className="min-h-screen bg-slate-800"
         style={{
+          backgroundImage: "url('/images/mesa_de_som_transp2.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          backgroundAttachment: "fixed",
         }}
       >
-        <object
-          type="image/svg+xml"
-          data="/svg/logo_vetor.svg"
-          className="w-[80%] sm:w-[400px] h-auto mx-auto"
-        >
-          Seu navegador não suporta SVG.
-        </object>
-      </h1>
-
-      <div className="container mx-auto flex flex-col items-center text-white">
-        <div
-          className="w-full max-w-2xl bg-gray-800 bg-opacity-80 shadow-2xl rounded-lg p-6"
+        <h1
+          className="text-7xl py-7 tracking-wide flex justify-center"
           style={{
-            boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
           }}
         >
-          <div className="flex justify-between items-center mb-4">
-            <h1 className="text-3xl font-bold text-white bg-fixed"></h1>
-            <a
-              onClick={handleLogout}
-              className="text-slate-300 px-4 hover:underline hover:text-slate-100 cursor-pointer"
-            >
-              Sair (Logout)
-            </a>
-          </div>
-          <div style={{ position: "relative" }}>
-            <ul className="space-y-4">
-              {mp3Files.map((mp3, index) => (
-                <li
-                  key={index}
-                  className="bg-gray-700 bg-opacity-75 p-4 rounded-md shadow-md hover:bg-gray-600 transition duration-300"
-                >
-                  <div
-                    className="flex items-center justify-between cursor-pointer"
-                    onClick={() => openModal(mp3)}
-                  >
-                    <span className="text-lg font-medium text-gray-100">
-                      {mp3.name}
-                    </span>
+          <object
+            type="image/svg+xml"
+            data="/svg/logo_vetor.svg"
+            className="w-[80%] sm:w-[400px] h-auto mx-auto"
+          >
+            Seu navegador não suporta SVG.
+          </object>
+        </h1>
 
-                    <div className="flex items-center text-indigo-400 hover:text-indigo-200 transition duration-300">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="w-6 h-6"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                        />
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z"
-                        />
-                      </svg>
-                      <span className="ml-2">Ouvir</span>
+        <div className="container mx-auto flex flex-col items-center text-white">
+          <div
+            className="w-full max-w-2xl bg-gray-800 bg-opacity-80 shadow-2xl rounded-lg p-6"
+            style={{
+              boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)",
+            }}
+          >
+            <div className="flex justify-between items-center mb-4">
+              <h1 className="text-3xl font-bold text-white bg-fixed"></h1>
+              <a
+                onClick={handleLogout}
+                className="text-slate-300 px-4 hover:underline hover:text-slate-100 cursor-pointer"
+              >
+                Sair (Logout)
+              </a>
+            </div>
+            <div style={{ position: "relative" }}>
+              <ul className="space-y-4">
+                {mp3Files.map((mp3, index) => (
+                  <li
+                    key={index}
+                    className="bg-gray-700 bg-opacity-75 p-4 rounded-md shadow-md hover:bg-gray-600 transition duration-300"
+                  >
+                    <div
+                      className="flex items-center justify-between cursor-pointer"
+                      onClick={() => openModal(mp3)}
+                    >
+                      <span className="text-lg font-medium text-gray-100">
+                        {mp3.name}
+                      </span>
+
+                      <div className="flex items-center text-indigo-400 hover:text-indigo-200 transition duration-300">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-6 h-6"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                          />
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z"
+                          />
+                        </svg>
+                        <span className="ml-2">Ouvir</span>
+                      </div>
                     </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Modal para o player de MP3 */}
-      {selectedMp3 && (
-        <Modal
-          isOpen={isModalOpen}
-          onClose={closeModal}
-          mp3Url={selectedMp3.url}
-          mp3Name={selectedMp3.name}
-        />
-      )}
-    </div>
+        {/* Modal para o player de MP3 */}
+        {selectedMp3 && (
+          <Modal
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            mp3Url={selectedMp3.url}
+            mp3Name={selectedMp3.name}
+          />
+        )}
+      </div>
     </>
   );
 }
