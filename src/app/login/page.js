@@ -10,7 +10,10 @@ export default function LoginPage() {
   
   const handleLogin = (e) => {
     e.preventDefault();
-    if (username === 'user' && password === '123') {
+    // Convertendo o username digitado para minúsculas
+    const normalizedUsername = username.toLowerCase();
+
+    if (normalizedUsername === 'user' && password === '123') {
       localStorage.setItem('isAuthenticated', 'true');
       router.push('/');
     } else {
