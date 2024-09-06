@@ -1,9 +1,11 @@
+// app/page.tsx
 "use client";
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Modal from "./components/Modal"; // Importe o modal
 import Header from "./components/Header";
+import Logo from "./components/Logo"; // Importe o Logo
 
 // Definindo a interface para os arquivos MP3
 interface Mp3File {
@@ -11,15 +13,13 @@ interface Mp3File {
   url: string;
 }
 
-
 import mp3Files from './data/mp3Files.json'; // Caminho do JSON
 
-// O restante do seu código
 export default function Mp3ListPage() {
   const router = useRouter();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedMp3, setSelectedMp3] = useState<Mp3File | null>(null); // Tipagem correta
+  const [selectedMp3, setSelectedMp3] = useState<Mp3File | null>(null);
 
   useEffect(() => {
     const isLoggedIn = localStorage.getItem("isAuthenticated");
@@ -62,23 +62,7 @@ export default function Mp3ListPage() {
           backgroundAttachment: "fixed",
         }}
       >
-        <h1
-          className="text-7xl py-7 tracking-wide flex justify-center"
-          style={{
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        >
-          <object
-            type="image/svg+xml"
-            data="/svg/logo_vetor.svg"
-            className="w-[80%] sm:w-[400px] h-auto mx-auto"
-          >
-            Seu navegador não suporta SVG.
-          </object>
-        </h1>
-
+        <Logo /> {/* Usando o componente Logo */}
         <div className="container mx-auto flex flex-col items-center text-white">
           <div
             className="w-full max-w-2xl bg-gray-800 bg-opacity-80 shadow-2xl rounded-lg p-6"
