@@ -11,10 +11,6 @@ interface Mp3File {
   url: string;
 }
 
-
-import mp3Files from './data/mp3Files.json'; // Caminho do JSON
-
-// O restante do seu código
 export default function Mp3ListPage() {
   const router = useRouter();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -31,8 +27,49 @@ export default function Mp3ListPage() {
   }, [router]);
 
   useEffect(() => {
+    // Define o scroll para o topo ao carregar a página
     window.scrollTo(0, 0);
-  }, []);
+  }, []); // Este useEffect será chamado uma vez quando a página for montada
+
+  if (!isAuthenticated) {
+    return null; // Ou pode retornar um loading spinner enquanto verifica a autenticação
+  }
+
+  // Array de MP3s tipado
+  const mp3Files: Mp3File[] = [
+    {
+      name: "Ciclo Vicioso (2023-12-18)",
+      url: "/mp3/CicloVicioso(2023-12-18).m4a",
+    },
+    {
+      name: "Espiral do Regresso (2019-11-08)",
+      url: "/mp3/EspiralDoRegresso(2019-11-08).mp3",
+    },
+    {
+      name: "Silêncio (2022-07-30)",
+      url: "/mp3/Silencio(2022-07-30).m4a",
+    },
+    {
+      name: "Almas Cinzentas (2023-12-18)",
+      url: "/mp3/AlmasCinzentas(2023-12-18).m4a",
+    },
+    {
+      name: "O Preço que se Paga (2019-08-20)",
+      url: "/mp3/OPreçoQueSePAga(2019-08-20).mp3",
+    },
+    {
+      name: "Novo Sol (2022-07-30)",
+      url: "/mp3/NovoSol(2022-07-30).m4a",
+    },
+    {
+      name: "Dentro da Noite (2019-11-08)",
+      url: "/mp3/DentroDaNoite(2019-11-08).mp3",
+    },
+    {
+      name: "Fora da Curva (2019-11-08)",
+      url: "/mp3/ForaDaCurva(2019-11-08).mp3",
+    },
+  ];
 
   const handleLogout = () => {
     localStorage.removeItem("isAuthenticated");
@@ -139,6 +176,8 @@ export default function Mp3ListPage() {
             </div>
           </div>
         </div>
+
+        {/* Modal para o player de MP3 */}
         {selectedMp3 && (
           <Modal
             isOpen={isModalOpen}
