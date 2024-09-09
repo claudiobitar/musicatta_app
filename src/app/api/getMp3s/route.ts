@@ -100,6 +100,13 @@ const mp3s = [
     url: "/mp3/ForaDaCurva(2019-11-08).mp3",
     new: false,
     category: "others"
+  },
+
+  {
+    name: "Teste",
+    url: "/mp3/ForaDaCurva(2019-11-08).mp3",
+    new: false,
+    category: "others"
   } 
 ];
 
