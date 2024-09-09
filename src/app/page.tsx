@@ -1,4 +1,5 @@
-"use client";
+"use client"
+import useSWR from 'swr';
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Modal from "./components/Modal";
@@ -10,28 +11,21 @@ interface Mp3 {
   name: string;
   url: string;
   new: boolean;
-  category: string; // Adicionada a propriedade 'category'
+  category: string;
 }
 
-import mp3List from "./data/mp3_list.json"; // Caminho do JSON
+// Função fetcher para buscar os dados
+const fetcher = (url: string) => fetch(url, { headers: { "Cache-Control": "no-cache" } }).then(res => res.json());
 
 export default function Mp3ListPage() {
   const router = useRouter();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedMp3, setSelectedMp3] = useState<Mp3 | null>(null);
-  const [mp3s, setMp3s] = useState<Mp3[]>(mp3List); // Estado para armazenar a lista de mp3
 
-  // Função para buscar os dados atualizados
-  const fetchUpdatedData = async () => {
-    try {
-      const response = await fetch("/api/getMp3s"); // Altere isso para sua API ou arquivo de dados
-      const updatedData = await response.json();
-      setMp3s(updatedData); // Atualize o estado com os dados mais recentes
-    } catch (error) {
-      console.error("Erro ao buscar os dados:", error);
-    }
-  };
+  // Usando SWR para fazer a busca automática dos dados
+  const { data: mp3s, error, mutate } = useSWR<Mp3[]>('/api/getMp3s', fetcher, { refreshInterval: 10000 });
+  
 
   useEffect(() => {
     const isLoggedIn = localStorage.getItem("isAuthenticated");
@@ -40,11 +34,6 @@ export default function Mp3ListPage() {
     } else {
       setIsAuthenticated(true);
     }
-
-    // Configurando o polling para buscar os dados a cada 60 segundos
-    const intervalId = setInterval(fetchUpdatedData, 60000); // 60 segundos
-
-    return () => clearInterval(intervalId); // Limpa o intervalo quando o componente desmontar
   }, [router]);
 
   useEffect(() => {
@@ -68,8 +57,8 @@ export default function Mp3ListPage() {
 
   // Função para renderizar uma lista de músicas por categoria
   const renderCategory = (category: string, title: string) => {
-    const filteredMp3s = mp3s.filter((mp3) => mp3.category === category);
-    if (filteredMp3s.length === 0) return null; // Se não houver músicas, não renderiza nada
+    const filteredMp3s = mp3s?.filter((mp3) => mp3.category === category);
+    if (!filteredMp3s || filteredMp3s.length === 0) return null;
 
     return (
       <>
