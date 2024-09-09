@@ -20,6 +20,18 @@ export default function Mp3ListPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedMp3, setSelectedMp3] = useState<Mp3 | null>(null);
+  const [mp3s, setMp3s] = useState<Mp3[]>(mp3List); // Estado para armazenar a lista de mp3
+
+  // Função para buscar os dados atualizados
+  const fetchUpdatedData = async () => {
+    try {
+      const response = await fetch("/api/getMp3s"); // Altere isso para sua API ou arquivo de dados
+      const updatedData = await response.json();
+      setMp3s(updatedData); // Atualize o estado com os dados mais recentes
+    } catch (error) {
+      console.error("Erro ao buscar os dados:", error);
+    }
+  };
 
   useEffect(() => {
     const isLoggedIn = localStorage.getItem("isAuthenticated");
@@ -28,6 +40,11 @@ export default function Mp3ListPage() {
     } else {
       setIsAuthenticated(true);
     }
+
+    // Configurando o polling para buscar os dados a cada 60 segundos
+    const intervalId = setInterval(fetchUpdatedData, 60000); // 60 segundos
+
+    return () => clearInterval(intervalId); // Limpa o intervalo quando o componente desmontar
   }, [router]);
 
   useEffect(() => {
@@ -51,7 +68,7 @@ export default function Mp3ListPage() {
 
   // Função para renderizar uma lista de músicas por categoria
   const renderCategory = (category: string, title: string) => {
-    const filteredMp3s = mp3List.filter((mp3) => mp3.category === category);
+    const filteredMp3s = mp3s.filter((mp3) => mp3.category === category);
     if (filteredMp3s.length === 0) return null; // Se não houver músicas, não renderiza nada
 
     return (
