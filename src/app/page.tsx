@@ -149,8 +149,10 @@ export default function Mp3ListPage() {
 
             {/* Renderizando as categorias */}
             {renderCategory("main", "Selecionadas")}
-            {renderCategory("without_guitar", "Sem guitarra")}
-            {renderCategory("others", "Outras")}
+            {renderCategory("mids", "MID's")}
+            {renderCategory("early", "Gravações Antigas")}
+        
+           
           </div>
         </div>
         {selectedMp3 && (
