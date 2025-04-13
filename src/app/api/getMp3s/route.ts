@@ -32,7 +32,7 @@ const mp3s = [
   },
 
   {
-    name: "Alma Cinzentas (2024-11-24)",
+    name: "Almas Cinzentas (2024-11-24)",
     url: "/mp3/AlmasCinzentas2_2024-11-24_.flac",
     new: false,
     category: "main"
