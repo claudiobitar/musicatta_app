@@ -25,18 +25,26 @@ const mp3s = [
   },
 
   {
+    name: "Groove Aliens (2025-04-13)",
+    url: "/mp3/GrooveAliens(2025-04-13).m4a",
+    new: true,
+    category: "main"
+  },
+
+  {
+    name: "Almas Cinzentas (2025-04-13)",
+    url: "/mp3/AlmasCinzentas(2025-04-13).m4a",
+    new: true,
+    category: "main"
+  },
+
+  {
     name: "A Brigada do Ego (2025-02-23)",
     url: "/mp3/ABrigadaDoEgo(2025-02-23).m4a",
     new: false,
     category: "main"
   },
 
-  {
-    name: "Almas Cinzentas (2024-11-24)",
-    url: "/mp3/AlmasCinzentas2_2024-11-24_.flac",
-    new: false,
-    category: "main"
-  },
   
   {
     name: "O Preço que se Paga (2019-08-20)",
@@ -85,7 +93,15 @@ const mp3s = [
     url: "/mp3/early/CicloVicioso(2023-12-18).m4a",
     new: false,
     category: "early"
-  }   
+  },   
+
+  {
+    name: "Almas Cinzentas (2024-11-24)",
+    url: "/mp3/early/AlmasCinzentas2_2024-11-24_.flac",
+    new: false,
+    category: "early"
+  }
+  
 ];
 
 
