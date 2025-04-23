@@ -1,12 +1,11 @@
-"use client"
-import useSWR from 'swr';
+"use client";
+import useSWR from "swr";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Modal from "./components/Modal";
 import Header from "./components/Header";
 import Logo from "./components/Logo";
 
-// Definindo a interface para os arquivos MP3
 interface Mp3 {
   name: string;
   url: string;
@@ -14,18 +13,23 @@ interface Mp3 {
   category: string;
 }
 
-// Função fetcher para buscar os dados
-const fetcher = (url: string) => fetch(url, { headers: { "Cache-Control": "no-cache" } }).then(res => res.json());
+const fetcher = (url: string) =>
+  fetch(url, { headers: { "Cache-Control": "no-cache" } }).then((res) =>
+    res.json()
+  );
 
 export default function Mp3ListPage() {
   const router = useRouter();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedMp3, setSelectedMp3] = useState<Mp3 | null>(null);
+  const [openCategory, setOpenCategory] = useState<string | null>(null);
 
-  // Usando SWR para fazer a busca automática dos dados
-  const { data: mp3s, error, mutate } = useSWR<Mp3[]>('/api/getMp3s', fetcher, { refreshInterval: 10000 });
-  
+  const {
+    data: mp3s,
+    error,
+    mutate,
+  } = useSWR<Mp3[]>("/api/getMp3s", fetcher, { refreshInterval: 10000 });
 
   useEffect(() => {
     const isLoggedIn = localStorage.getItem("isAuthenticated");
@@ -55,64 +59,103 @@ export default function Mp3ListPage() {
     setSelectedMp3(null);
   };
 
-  // Função para renderizar uma lista de músicas por categoria
+  const toggleCategory = (category: string) => {
+    setOpenCategory((prev) => (prev === category ? null : category));
+  };
+
   const renderCategory = (category: string, title: string) => {
     const filteredMp3s = mp3s?.filter((mp3) => mp3.category === category);
     if (!filteredMp3s || filteredMp3s.length === 0) return null;
 
+    const isOpen = openCategory === category;
+
     return (
-      <>
-        <div className="flex items-center mt-6 mb-4">
-          <div className="w-4 h-4 bg-green-500 mr-2"></div>
-          <h2 className="text-[20px] text-white leading-none">{title}</h2>
-        </div>
-        <ul className="space-y-4">
-          {filteredMp3s.map((mp3, index) => (
-            <li
-              key={index}
-              className="bg-gray-700 bg-opacity-75 p-4 rounded-md shadow-md hover:bg-gray-600 transition duration-300"
-            >
-              <div
-                className="flex items-center justify-between cursor-pointer"
-                onClick={() => openModal(mp3)}
+      <div className="w-full">
+        <button
+          className="w-full flex items-center justify-between bg-gray-700 p-4 rounded-md mb-2 shadow hover:bg-gray-700 transition duration-300"
+          onClick={() => toggleCategory(category)}
+        >
+          <div className="flex items-center">
+            <div className="w-4 h-4 bg-green-500 mr-3 pb-3 squared-full"></div>
+
+            <h2 className="text-lg text-white">{title}</h2>
+          </div>
+          <svg
+            className={`w-5 h-5 text-white transition-transform duration-300 ${
+              isOpen ? "rotate-180" : ""
+            }`}
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </button>
+
+        <div
+          className={`transition-all duration-500 overflow-hidden ${
+            isOpen ? "max-h-[1000px]" : "max-h-0"
+          }`}
+        >
+          <ul className="space-y-4 px-2 pt-2 pb-4">
+            {filteredMp3s.map((mp3, index) => (
+              <li
+                key={index}
+                className={`bg-gray-700 bg-opacity-75 p-4  rounded-md shadow-md transition-all duration-500 ease-in-out
+                  ${
+                    isOpen
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 -translate-y-2 pointer-events-none"
+                  }
+                `}
               >
-                <div className="flex items-center">
-                  <span className="text-lg font-medium text-gray-100">
-                    {mp3.name}
-                  </span>
-                  {mp3.new && (
-                    <span className="ml-2.5 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-                      Novo
+                <div
+                  className="flex items-center justify-between cursor-pointer"
+                  onClick={() => openModal(mp3)}
+                >
+                  <div className="flex items-center">
+                    <span className="text-lg font-medium text-gray-100">
+                      {mp3.name}
                     </span>
-                  )}
+                    {mp3.new && (
+                      <span className="ml-2.5 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                        Novo
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex items-center text-indigo-400 hover:text-indigo-200 transition duration-300 pl-5">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z"
+                      />
+                    </svg>
+                    <span className="ml-2">Ouvir</span>
+                  </div>
                 </div>
-                <div className="flex items-center text-indigo-400 hover:text-indigo-200 transition duration-300 pl-5">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-6 h-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z"
-                    />
-                  </svg>
-                  <span className="ml-2">Ouvir</span>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     );
   };
 
@@ -138,7 +181,7 @@ export default function Mp3ListPage() {
             }}
           >
             <div className="flex justify-between items-center mb-4">
-              <h1 className="text-3xl font-bold text-white bg-fixed"></h1>
+              <h1 className="text-3xl font-bold text-white bg-fixed">Áudios</h1>
               <button
                 onClick={handleLogout}
                 className="text-slate-300 px-4 hover:underline hover:text-slate-100 cursor-pointer select-none"
@@ -147,12 +190,10 @@ export default function Mp3ListPage() {
               </button>
             </div>
 
-            {/* Renderizando as categorias */}
+            {/* Categorias */}
             {renderCategory("main", "Selecionadas")}
             {renderCategory("mids", "MID's")}
             {renderCategory("early", "Gravações Antigas")}
-        
-           
           </div>
         </div>
         {selectedMp3 && (
