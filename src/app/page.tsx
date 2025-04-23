@@ -99,7 +99,7 @@ export default function Mp3ListPage() {
 
         <div
           className={`transition-all duration-500 overflow-hidden ${
-            isOpen ? "max-h-screen" : "max-h-0"
+            isOpen ? "max-h-[9999px]" : "max-h-0"
           }`}
         >
           <ul className="space-y-4 px-2 pt-2 pb-4">
@@ -181,7 +181,7 @@ export default function Mp3ListPage() {
             }}
           >
             <div className="flex justify-between items-center mb-4">
-              <h1 className="text-3xl font-bold text-white bg-fixed">Áudios</h1>
+              <h1 className="text-3xl font-bold text-white bg-fixed">Áudios (teste)</h1>
               <button
                 onClick={handleLogout}
                 className="text-slate-300 px-4 hover:underline hover:text-slate-100 cursor-pointer select-none"
