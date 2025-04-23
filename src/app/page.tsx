@@ -99,7 +99,7 @@ export default function Mp3ListPage() {
 
         <div
           className={`transition-all duration-500 overflow-hidden ${
-            isOpen ? "max-h-[1000px]" : "max-h-0"
+            isOpen ? "max-h-screen" : "max-h-0"
           }`}
         >
           <ul className="space-y-4 px-2 pt-2 pb-4">
