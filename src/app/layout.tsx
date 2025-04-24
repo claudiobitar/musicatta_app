@@ -1,7 +1,7 @@
 // src/app/layout.tsx
 import { Inter } from "next/font/google";
 import "./globals.css";
-import BodyWrapper from "./components/BodyWrapper.tsx"; // ajuste o caminho se necessário
+import BodyWrapper from "./components/BodyWrapper"; // ajuste o caminho se necessário
 import { TestContext } from "node:test";
 
 const inter = Inter({ subsets: ["latin"] });
