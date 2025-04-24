@@ -16,7 +16,7 @@ export const metadata = {
     siteName: "Musicatta",
     images: [
       {
-        url: "https://musicatta.vercel.app/images/integrantes.jpg",
+        url: "https://musicatta.vercel.app/images/preview.jpg",
         width: 1200,
         height: 630,
         alt: "Imagem de pré-visualização do Musicatta",
