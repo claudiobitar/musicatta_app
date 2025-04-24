@@ -6,6 +6,28 @@ import { usePathname } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
+
+export const metadata = {
+  title: "Musicatta",
+ 
+  openGraph: {
+    title: "Musicatta",  
+    url: "https://musicatta.vercel.app/",
+    siteName: "Musicatta",
+    images: [
+      {
+        url: "https://musicatta.vercel.app/images/preview.jpg", 
+        width: 1200,
+        height: 630,
+        alt: "Imagem de pré-visualização do Musicatta",
+      },
+    ],
+    type: "website",
+  },
+};
+
+
+
 export default function RootLayout({
   children,
 }: Readonly<{
