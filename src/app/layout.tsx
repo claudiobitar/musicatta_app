@@ -2,6 +2,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import BodyWrapper from "./components/BodyWrapper.tsx"; // ajuste o caminho se necessário
+import { TestContext } from "node:test";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,11 +11,12 @@ export const metadata = {
 
   openGraph: {
     title: "Musicatta",
-    url: "https://musicatta.vercel.app/",
+    description: 'Teste',
+    url: "https://musicatta.vercel.app/",    
     siteName: "Musicatta",
     images: [
       {
-        url: "https://musicatta.vercel.app/images/preview.jpg",
+        url: "https://musicatta.vercel.app/images/integrantes.jpg",
         width: 1200,
         height: 630,
         alt: "Imagem de pré-visualização do Musicatta",
