@@ -11,7 +11,7 @@ export const metadata = {
 
   openGraph: {
     title: "Musicatta",
-    description: 'Teste',
+    /*description: 'App de lista de Mp3's',*/
     url: "https://musicatta.vercel.app/",    
     siteName: "Musicatta",
     images: [
