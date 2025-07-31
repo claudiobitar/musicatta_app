@@ -27,14 +27,14 @@ const mp3s = [
   {
     name: "Groove Aliens (2025-04-13)",
     url: "/mp3/GrooveAliens(2025-04-13).m4a",
-    new: true,
+    new: false,
     category: "main"
   },
 
   {
     name: "Almas Cinzentas (2025-04-13)",
     url: "/mp3/AlmasCinzentas(2025-04-13).m4a",
-    new: true,
+    new: false,
     category: "main"
   },
 
@@ -58,12 +58,12 @@ const mp3s = [
     url: "/mp3/OlhosVetados(2025-02-16).m4a",
     new: false,
     category: "main"
-  },
+  },  
 
   {
-    name: "Inadequado (2025-02-23)",
-    url: "/mp3/Inadequado(2025-02-23).m4a",
-    new: false,
+    name: "Olhos Vetados - SEM_GUITARRA (2025-05-18)",
+    url: "/mp3/OlhosVetados_SEM_GUITARRA(2025-05-18).m4a",
+    new: true,
     category: "main"
   },
 
