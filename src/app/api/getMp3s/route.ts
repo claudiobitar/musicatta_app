@@ -87,6 +87,13 @@ const mp3s = [
     new: false,
     category: "mids"
   },
+
+  {
+    name: "Mensagens Subliminares",
+    url: "/mp3/mids/Mensagens Subliminares Mid Versão 2.m4a",
+    new: false,
+    category: "mids"
+  },
   
   {
     name: "Ciclo Vicioso (2023-12-18)",
