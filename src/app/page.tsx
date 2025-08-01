@@ -181,7 +181,7 @@ export default function Mp3ListPage() {
             }}
           >
             <div className="flex justify-between items-center mb-4">
-              <h1 className="text-3xl font-bold text-white bg-fixed">Áudios</h1>
+              <h1 className="text-3xl font-bold text-white bg-fixed">Arquivos</h1>
               <button
                 onClick={handleLogout}
                 className="text-slate-300 px-4 hover:underline hover:text-slate-100 cursor-pointer select-none"
@@ -194,7 +194,7 @@ export default function Mp3ListPage() {
             {renderCategory("main", "Áudio - Selecionadas")}
             {renderCategory("mids", "Áudio - MID's")}
             {renderCategory("early", "Áudio - Gravações Antigas")}
-            {renderCategory("sheet music", "Partituras")}
+            {/*{renderCategory("sheet music", "Partituras")}*/}
           </div>
         </div>
         {selectedMp3 && (
