@@ -191,9 +191,10 @@ export default function Mp3ListPage() {
             </div>
 
             {/* Categorias */}
-            {renderCategory("main", "Selecionadas")}
-            {renderCategory("mids", "MID's")}
-            {renderCategory("early", "Gravações Antigas")}
+            {renderCategory("main", "Áudio - Selecionadas")}
+            {renderCategory("mids", "Áudio - MID's")}
+            {renderCategory("early", "Áudio - Gravações Antigas")}
+            {renderCategory("sheet music", "Partituras")}
           </div>
         </div>
         {selectedMp3 && (

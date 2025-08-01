@@ -107,6 +107,12 @@ const mp3s = [
     url: "/mp3/early/AlmasCinzentas2_2024-11-24_.flac",
     new: false,
     category: "early"
+  },
+  {
+    name: "Mensagens Subliminares - Partitura da bateria",
+    url: "/pdf/early/Mensagens_Subliminares_bateria_partitura VS 2.pdf",
+    new: true,
+    category: "sheet music"
   }
   
 ];
