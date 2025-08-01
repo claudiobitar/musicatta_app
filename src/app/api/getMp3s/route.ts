@@ -91,7 +91,7 @@ const mp3s = [
   {
     name: "Mensagens Subliminares",
     url: "/mp3/mids/Mensagens Subliminares Mid Versão 2.m4a",
-    new: false,
+    new: true,
     category: "mids"
   },
   
