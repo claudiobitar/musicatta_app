@@ -50,8 +50,12 @@ export default function Mp3ListPage() {
   };
 
   const openModal = (mp3: Mp3) => {
-    setSelectedMp3(mp3);
-    setIsModalOpen(true);
+    if (mp3.category === "sheet music") {
+      window.open(mp3.url, "_blank"); // abre o PDF em nova aba
+    } else {
+      setSelectedMp3(mp3);
+      setIsModalOpen(true);
+    }
   };
 
   const closeModal = () => {
@@ -129,26 +133,50 @@ export default function Mp3ListPage() {
                     )}
                   </div>
                   <div className="flex items-center text-indigo-400 hover:text-indigo-200 transition duration-300 pl-5">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-6 h-6"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z"
-                      />
-                    </svg>
-                    <span className="ml-2">Ouvir</span>
+                    {mp3.category === "sheet music" ? (
+                      <>
+                        {/* Ícone de documento */}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-6 h-6"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M19.5 14.25v4.125a2.625 2.625 0 0 1-2.625 2.625H7.125A2.625 2.625 0 0 1 4.5 18.375V5.625A2.625 2.625 0 0 1 7.125 3h6.375L19.5 8.25v6z"
+                          />
+                        </svg>
+                        <span className="ml-2">Abrir PDF</span>
+                      </>
+                    ) : (
+                      <>
+                        {/* Ícone de play */}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-6 h-6"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                          />
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z"
+                          />
+                        </svg>
+                        <span className="ml-2">Ouvir</span>
+                      </>
+                    )}
                   </div>
                 </div>
               </li>
@@ -181,7 +209,9 @@ export default function Mp3ListPage() {
             }}
           >
             <div className="flex justify-between items-center mb-4">
-              <h1 className="text-3xl font-bold text-white bg-fixed">Arquivos</h1>
+              <h1 className="text-3xl font-bold text-white bg-fixed">
+                Arquivos
+              </h1>
               <button
                 onClick={handleLogout}
                 className="text-slate-300 px-4 hover:underline hover:text-slate-100 cursor-pointer select-none"
@@ -194,7 +224,7 @@ export default function Mp3ListPage() {
             {renderCategory("main", "Áudio - Selecionadas")}
             {renderCategory("mids", "Áudio - MID's")}
             {renderCategory("early", "Áudio - Gravações Antigas")}
-            {/*{renderCategory("sheet music", "Partituras")}*/}
+            {renderCategory("sheet music", "Partituras")}
           </div>
         </div>
         {selectedMp3 && (

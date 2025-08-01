@@ -93,6 +93,13 @@ const mp3s = [
     url: "/mp3/mids/Mensagens Subliminares Mid Versão 2.m4a",
     new: true,
     category: "mids"
+  },  
+  
+  {
+    name: "Mensagens Subliminares - Bateria",
+    url: "/mp3/mids/Mensagens Subliminares2_BATERIA.wav",
+    new: true,
+    category: "mids"
   },
   
   {
@@ -110,7 +117,7 @@ const mp3s = [
   },
   {
     name: "Mensagens Subliminares - Partitura da bateria",
-    url: "/pdf/early/Mensagens_Subliminares_bateria_partitura VS 2.pdf",
+    url: "/pdf/Mensagens_Subliminares_bateria_partitura VS 2.pdf",
     new: true,
     category: "sheet music"
   }
