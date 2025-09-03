@@ -61,8 +61,15 @@ const mp3s = [
   },  
 
   {
-    name: "Olhos Vetados - SEM_GUITARRA (2025-05-18)",
-    url: "/mp3/OlhosVetados_SEM_GUITARRA(2025-05-18).m4a",
+    name: "Olhos Vetados - SEM_GUITARRA (2025-08-24)",
+    url: "/mp3/Olhos Vetados(2025-08-24)_SEM_GUITARRA.m4a",
+    new: true,
+    category: "main"
+  },
+
+  {
+    name: "Mensagens Subliminares - SEM_GUITARRA (2025-08-24)",
+    url: "/mp3/Mensagens Subliminares 2(2025-08-24)_SEM_GUITARRA.m4a",
     new: true,
     category: "main"
   },
@@ -91,14 +98,14 @@ const mp3s = [
   {
     name: "Mensagens Subliminares",
     url: "/mp3/mids/Mensagens Subliminares Mid Versão 2.m4a",
-    new: true,
+    new: false,
     category: "mids"
   },  
   
   {
     name: "Mensagens Subliminares - Bateria",
     url: "/mp3/mids/Mensagens Subliminares2_BATERIA.wav",
-    new: true,
+    new: false,
     category: "mids"
   },
   
@@ -118,7 +125,7 @@ const mp3s = [
   {
     name: "Mensagens Subliminares - Partitura da bateria",
     url: "/pdf/Mensagens_Subliminares_bateria_partitura VS 2.pdf",
-    new: true,
+    new: false,
     category: "sheet music"
   }
   
