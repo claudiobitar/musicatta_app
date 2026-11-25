@@ -37,14 +37,7 @@ const mp3s = [
     new: false,
     category: "main"
   },
-
-  {
-    name: "A Brigada do Ego (2025-02-23)",
-    url: "/mp3/ABrigadaDoEgo(2025-02-23).m4a",
-    new: false,
-    category: "main"
-  },
-
+  
   
   {
     name: "O Preço que se Paga (2019-08-20)",
@@ -127,6 +120,13 @@ const mp3s = [
     url: "/pdf/Mensagens_Subliminares_bateria_partitura VS 2.pdf",
     new: false,
     category: "sheet music"
+  },
+	
+	{
+    name: "A Brigada do Ego - Versão 2026",
+    url: "/mp3/mids/A Brigada_do_Ego_2026_04_192kbs.mp3",
+    new: true,
+    category: "mids"
   }
   
 ];
