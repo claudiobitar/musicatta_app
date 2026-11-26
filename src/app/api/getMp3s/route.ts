@@ -128,7 +128,7 @@ const mp3s = [
     category: "sheet music"
   },	
 	{
-    name: "A Brigada do Ego - Partitura da guitarra",
+    name: "A Brigada do Ego - Tablatura da guitarra",
     url: "/pdf/A Brigada do Ego_GUITARRA.pdf",
     new: true,
     category: "sheet music"

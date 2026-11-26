@@ -224,7 +224,7 @@ export default function Mp3ListPage() {
             {renderCategory("main", "Áudio - Selecionadas")}
             {renderCategory("mids", "Áudio - MID's")}
             {renderCategory("early", "Áudio - Gravações Antigas")}
-            {renderCategory("sheet music", "Partituras")}
+            {renderCategory("sheet music", "Partituras / Tablaturas")}
           </div>
         </div>
         {selectedMp3 && (
