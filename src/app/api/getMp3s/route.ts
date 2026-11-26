@@ -117,11 +117,22 @@ const mp3s = [
   },
   {
     name: "Mensagens Subliminares - Partitura da bateria",
-    url: "/pdf/Mensagens_Subliminares_bateria_partitura VS 2.pdf",
+    url: "/pdf/Mensagens_Subliminares_BATERIA.pdf",
     new: false,
     category: "sheet music"
   },
-	
+	{
+    name: "A Brigada do Ego - Partitura da bateria",
+    url: "/pdf/A Brigada do Ego_BATERIA.pdf",
+    new: true,
+    category: "sheet music"
+  },	
+	{
+    name: "A Brigada do Ego - Partitura da guitarra",
+    url: "/pdf/A Brigada do Ego_GUITARRA.pdf",
+    new: true,
+    category: "sheet music"
+  },	 	
 	{
     name: "A Brigada do Ego - Versão 2026",
     url: "/mp3/mids/A Brigada_do_Ego_2026_04_192kbs.mp3",
